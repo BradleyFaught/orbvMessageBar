@@ -29,7 +29,7 @@
         self.inputView = [[UITextView alloc] initWithFrame:input_frame];
         [self.inputView.layer setCornerRadius:10.0];
         self.inputView.delegate = self;
-        self.inputView.contentInset = UIEdgeInsetsMake(4, 0, -2, 0);
+        self.inputView.contentInset = UIEdgeInsetsMake(4, 0, -4, 0);
         
         UIBarButtonItem *textView = [[UIBarButtonItem alloc] initWithCustomView:self.inputView];
         
@@ -54,12 +54,14 @@
     // Send whatever is in the textview as a delegate and remove text from textview
     NSString *message = self.inputView.text;
     [self.orbv_delegate sendPressed:message];
-        
-    // Change the view
-    [self resetView];
     
     // Resign the responder
-    [self endEditing:YES];
+    if ([self.inputView isFirstResponder]) {
+        [self.inputView resignFirstResponder];
+    }
+    
+    // Change the view
+    [self resetView];
 }
 
 - (void)dismissKeyboard:(NSNotification *)notification {
@@ -106,6 +108,7 @@
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.25];
     
+    // Reset the frame
     CGRect frame = self.frame;
     frame.origin.y = self.superview.frame.size.height - self.frame.size.height;
     self.frame = frame;
@@ -114,7 +117,7 @@
 }
 
 - (void)resetView {
-    // Resets the toolbar size to defaults; does not change origin
+    // Resets the toolbar size to defaults;
     // Set text to empty so resize will return to default
     self.inputView.text = @"";
     CGRect frame = self.inputView.frame;
@@ -123,7 +126,7 @@
     
     // Reset toolbar size.
     self.frame = CGRectMake(0,
-                            self.frame.origin.y,
+                            self.superview.frame.size.height - ORBV_DEF_H,
                             self.superview.frame.size.width,
                             ORBV_DEF_H);
 }
