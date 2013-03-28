@@ -2,8 +2,7 @@
 //  orbvMessageBar.m
 //  orbvMessageBar
 //
-//  Created by Alex Dillhoff on 3/27/13.
-//  Copyright (c) 2013 Alex Dillhoff. All rights reserved.
+//  Created by orbv on 3/27/13.
 //
 
 #import "orbvMessageBar.h"
