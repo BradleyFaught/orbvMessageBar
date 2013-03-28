@@ -18,7 +18,6 @@
                                frame.size.height - ORBV_DEF_H,
                                frame.size.width,
                                ORBV_DEF_H);
-        
         self.frame = new_frame;
         
         // Change tint color

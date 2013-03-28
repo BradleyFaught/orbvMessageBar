@@ -14,6 +14,7 @@
 #define ORBV_DEF_BUTTON_W 40.0
 #define ORBV_DEF_BUTTON_H 20.0
 
+// Protocol for delegate
 @protocol orbvMessageDelegate <NSObject>
 
 - (void)sendPressed:(NSString *)message;
