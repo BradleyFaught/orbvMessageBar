@@ -4,6 +4,7 @@
 //
 //  Created by orbv on 3/27/13.
 //
+//  TODO: Respond to different font sizes
 
 #import "orbvMessageBar.h"
 
